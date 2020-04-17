@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -29,12 +31,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        WebView myWebView;
+        WebSettings webSettings = myWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        WebView webView = new WebView(this);
+        WebView myWebView=findViewById(R.id.my_webview);
+        webView.loadUrl("https://scio.his.se");
+
         /*
-        * Rename your App. Tip: Values->Strings
-        * Enable Internet access for your App. Tip: Manifest
-        * Create a WebView element in the layout file content_main.xml
-        * Give the WebView element ID "my_webview"
-        -- Commit and push to your github fork
         * Create a private member variable called "myWebView" of type WebView
         * Locate the WebView element created in step 1 using the ID created in step 2
         * Create a new WebViewClient to attach to our WebView. This allows us to
@@ -54,14 +59,6 @@ public class MainActivity extends AppCompatActivity {
            one (1) screenshot showing your external web page.
         */
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override
