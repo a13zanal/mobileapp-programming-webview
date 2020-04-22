@@ -16,12 +16,16 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Object WebView;
+
     public void showExternalWebPage(){
-        // TODO: Add your code for showing external web page here
+        WebView myWebView=findViewById(R.id.my_webview);
+        myWebView.loadUrl("https://www.google.com/");
     }
 
     public void showInternalWebPage(){
-        // TODO: Add your code for showing internal web page here
+        WebView myWebView=findViewById(R.id.my_webview);
+        myWebView.loadUrl("file:///android_asset/about.html");
     }
 
     @Override
@@ -30,21 +34,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        showExternalWebPage();
 
-        WebView myWebView;
+        WebView myWebView = (WebView) findViewById(R.id.my_webview);
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        WebView webView = new WebView(this);
-        WebView myWebView=findViewById(R.id.my_webview);
-        webView.loadUrl("https://scio.his.se");
-
         /*
-        * Create a private member variable called "myWebView" of type WebView
-        * Locate the WebView element created in step 1 using the ID created in step 2
-        * Create a new WebViewClient to attach to our WebView. This allows us to
-          browse the web inside our app.
-        -- Commit and push to your github fork
         * Enable Javascript execution in your WebViewClient
         * Enter the url to load in our WebView
         -- Commit and push to your github fork
@@ -78,11 +74,13 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_external_web) {
             Log.d("==>","Will display external web page");
+            showExternalWebPage();
             return true;
         }
 
         if (id == R.id.action_internal_web) {
             Log.d("==>","Will display internal web page");
+            showInternalWebPage();
             return true;
         }
 
