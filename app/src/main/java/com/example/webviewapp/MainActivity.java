@@ -2,29 +2,23 @@ package com.example.webviewapp;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Object WebView;
+    private WebView myWebView;
 
     public void showExternalWebPage(){
-        WebView myWebView=findViewById(R.id.my_webview);
         myWebView.loadUrl("https://www.google.com/");
     }
 
     public void showInternalWebPage(){
-        WebView myWebView=findViewById(R.id.my_webview);
         myWebView.loadUrl("file:///android_asset/about.html");
     }
 
@@ -36,25 +30,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         showExternalWebPage();
 
-        WebView myWebView = (WebView) findViewById(R.id.my_webview);
+        WebView myWebView = findViewById(R.id.my_webview);
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
-        /*
-        * Enable Javascript execution in your WebViewClient
-        * Enter the url to load in our WebView
-        -- Commit and push to your github fork
-        * Move the code that loads a URL into your WebView into the two methods
-          "showExternalWebPage()" and "showInternalWebPage()".
-        * Call the "showExternalWebPage()" / "showInternalWebPage()" methods
-          when you select menu options "External Web Page" or "Internal Web Page"
-          respectively
-        -- Commit and push to your github fork
-        * Take two screenshots using the "Take a screenshot" tool in the AVD
-           showing your App. One (1) screenshot showing your internal web page and
-           one (1) screenshot showing your external web page.
-        */
-
     }
 
     @Override
